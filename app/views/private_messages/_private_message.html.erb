@@ -1,0 +1,5 @@
+<!-- app/views/private_messages/_private_message.html.erb -->
+
+<div class="<%= message.sender == current_user ? 'sent' : 'received' %>">
+  <strong><%= message.sender.name %>:</strong> <%= message.body %>
+</div>

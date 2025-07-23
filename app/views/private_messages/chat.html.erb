@@ -1,0 +1,12 @@
+<!-- app/views/private_messages/chat.html.erb -->
+
+<h2>Chatting with <%= @receiver.name %></h2>
+
+<div id="messages">
+  <%= render @messages %>
+</div>
+
+<%= form_with url: send_message_user_path(@receiver), method: :post, data: { turbo_stream: true } do |form| %>
+  <%= form.text_area :body, rows: 3 %>
+  <%= form.submit "Send" %>
+<% end %>

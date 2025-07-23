@@ -1,4 +1,16 @@
-<div class="bg-gray-100 p-2 rounded">
-  <strong><%= message.user.email %>:</strong>
-  <%= message.content %>
-</div>
+<% if message.user == current_user %>
+  <div class="flex justify-end">
+    <div class="bg-blue-500 text-white p-2 rounded-xl max-w-xs text-right">
+      <p><%= message.content %></p>
+      <p class="text-xs opacity-70 mt-1"><%= time_ago_in_words(message.created_at) %> ago</p>
+    </div>
+  </div>
+<% else %>
+  <div class="flex justify-start">
+    <div class="bg-gray-200 text-black p-2 rounded-xl max-w-xs">
+      <span class="font-semibold text-gray-700"><%= message.user.email.split("@").first %>:</span>
+      <span class="text-gray-800"><%= message.content %></span>
+      <p class="text-xs opacity-70 mt-1"><%= time_ago_in_words(message.created_at) %> ago</p>
+    </div>
+  </div>
+<% end %>

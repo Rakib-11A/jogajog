@@ -1,0 +1,7 @@
+<!-- app/views/private_messages/create.turbo_stream.erb -->
+
+<turbo-stream action="append" target="messages">
+  <template>
+    <%= render @message %>
+  </template>
+</turbo-stream>

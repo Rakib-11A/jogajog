@@ -1,0 +1,21 @@
+<h2 class="text-xl font-bold mb-4">ফ্রেন্ড লিস্ট / ইউজার লিস্ট</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <% @users.each do |user| %>
+    <% next if user == current_user %>
+    <div class="bg-white p-4 rounded shadow flex justify-between items-center">
+      <div>
+        <p class="font-semibold"><%= user.email %></p>
+      </div>
+      <div class="flex gap-2">
+        <% if current_user.friends.include?(user) %>
+          <%= link_to "চ্যাট", private_chat_path(user), class: "bg-primary text-white px-3 py-1 rounded" %>
+        <% elsif current_user.pending_friends.include?(user) %>
+          <span class="text-yellow-500">রিকোয়েস্ট পাঠানো</span>
+        <% else %>
+          <%= button_to "ফ্রেন্ড রিকোয়েস্ট", friend_requests_path(friend_id: user.id), method: :post, class: "bg-secondary text-white px-3 py-1 rounded" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

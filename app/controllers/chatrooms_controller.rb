@@ -8,6 +8,8 @@ class ChatroomsController < ApplicationController
 
   # GET /chatrooms/1 or /chatrooms/1.json
   def show
+    @chatroom = Chatroom.find(params[:id])
+    @messages = @chatroom.messages.includes(:user)
   end
 
   # GET /chatrooms/new
