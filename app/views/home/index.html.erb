@@ -1,0 +1,9 @@
+<h1 class="text-3xl font-bold mb-4">যোগাযোগ অ্যাপে স্বাগতম</h1>
+
+<% if user_signed_in? %>
+  <p>স্বাগতম, <%= current_user.email %></p>
+  <%= link_to "লগআউট", destroy_user_session_path, method: :delete, class: "text-blue-600" %>
+<% else %>
+  <%= link_to "রেজিস্টার করুন", new_user_registration_path, class: "text-blue-600 mr-4" %>
+  <%= link_to "লগইন করুন", new_user_session_path, class: "text-blue-600" %>
+<% end %>

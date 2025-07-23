@@ -1,0 +1,12 @@
+<div data-controller="chatroom" data-chatroom-chatroom-id-value="<%= @chatroom.id %>">
+  <div id="messages" class="space-y-2 mb-4">
+    <%= render @chatroom.messages %>
+  </div>
+
+  <%= form_with(model: [@chatroom, Message.new]) do |form| %>
+    <div class="flex gap-2">
+      <%= form.text_field :content, class: "flex-grow border p-2", placeholder: "Type your message..." %>
+      <%= form.submit "Send", class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+    </div>
+  <% end %>
+</div>
