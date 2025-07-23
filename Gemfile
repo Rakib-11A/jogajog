@@ -68,6 +68,6 @@ end
 gem 'devise'
 
 # For real-time messaging
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.4'
 
 
